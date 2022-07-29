@@ -5,11 +5,11 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    PlayerData Player = new PlayerData();
-    string path;
-
-    //싱글톤
     public static DataManager instance;
+    
+    private PlayerData _player = new PlayerData();
+    private string path;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,18 +20,20 @@ public class DataManager : MonoBehaviour
         {
             Destroy(instance.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject); //오브젝트가 파괴되지 않고 유지
+        DontDestroyOnLoad(this.gameObject);
 
-        path = Application.persistentDataPath + "/save"; //현재 프로젝트의 개별 경로 할당
+        path = Application.persistentDataPath + "/save"; 
     }
+
     public void Save()
     {
-        string data = JsonUtility.ToJson(Player); //PlayerData -> Json
+        string data = JsonUtility.ToJson(_player);
         File.WriteAllText(path, data);
     }
+
     public void Load()
     {
         string data = File.ReadAllText(path);
-        Player = JsonUtility.FromJson<PlayerData>(data); //Json -> PlayeData
+        _player = JsonUtility.FromJson<PlayerData>(data);
     }
 }
