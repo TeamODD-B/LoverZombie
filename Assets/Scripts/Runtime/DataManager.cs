@@ -3,26 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class DataManager : MonoBehaviour
+public class DataManager : SingletonGeneric<DataManager>
 {
-    public static DataManager instance;
-    
     private PlayerData _player = new PlayerData();
     private string path;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
-
-        path = Application.persistentDataPath + "/save"; 
+        base.Awake();
+        path = Application.persistentDataPath + "/save";
     }
 
     public void Save()
