@@ -1,0 +1,30 @@
+{
+    "EventId" : "Rain",
+    "Type": "Sub",
+    "Name": "비",
+    "ImgName": "Rain",
+    "Script": ["갑자기 비가 쏟아진다.", "천둥번개가 있는 걸로 봐서 비가 오래갈 듯 하다."],
+    "OptionCount": 2,
+    "Option1": {
+        "OptionId" : "Rain_1",
+        "NextEventId" : "",
+        "Text": "우비를 쓴다.",
+        "ItemRequired": [
+            "우비"
+        ],
+        "SkillRequired": [
+            
+        ]
+    },
+    "Option2": {
+        "OptionId" : "Rain_2",
+        "NextEventId" : "",
+        "Text": "우산을 쓴다.",
+        "ItemRequired": [
+            "우산"
+        ],
+        "SkillRequired": [
+            
+        ]
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "EventId" : "Shop",
+    "Type": "Sub",
+    "Name": "잡화점",
+    "ImgName": "Shop",
+    "Script": ["길거리를 돌아다니던 당신은 사거리의 한 잡화점을 발견했다.", "겉보기엔 평범해 보인다."],
+    "OptionCount": 4,
+    "Option1": {
+        "OptionId" : "Shop_1",
+        "NextEventId" : "",
+        "Text": "들어간다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option2": {
+        "OptionId" : "Shop_2",
+        "NextEventId" : "Leave",
+        "Text": "떠난다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option3": {
+        "OptionId" : "Shop_3",
+        "NextEventId" : "",
+        "Text": "주변을 수색한다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option4": {
+        "OptionId" : "Shop_4",
+        "NextEventId" : "",
+        "Text": "일자리를 구한다.",
+        "ItemRequired": [
+            
+        ],
+        "SkillRequired": [
+
+        ]
+    }
+}

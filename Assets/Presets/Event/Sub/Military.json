@@ -1,0 +1,52 @@
+{
+    "EventId" : "Military",
+    "Type": "Sub",
+    "Name": "군부대",
+    "ImgName": "Military",
+    "Script": ["도시를 방어하던 수도방위사령부의 전초기지다.", "상태를 보니 버려진지 꽤 오래된 것 같다."],
+    "OptionCount": 4,
+    "Option1": {
+        "OptionId" : "Military_1",
+        "NextEventId" : "",
+        "Text": "들어간다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option2": {
+        "OptionId" : "Military_2",
+        "NextEventId" : "",
+        "Text": "버려진 기지의 사령관이 된다.",
+        "ItemRequired": [
+            "군복"
+        ],
+        "SkillRequired": [
+            "통솔력"
+        ]
+    },
+    "Option3": {
+        "OptionId" : "Military_3",
+        "NextEventId" : "",
+        "Text": "PTSD가 올 것 같으니 바로 떠난다..",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option4": {
+        "OptionId" : "Military_4",
+        "NextEventId" : "",
+        "Text": "근처를 수색한다.",
+        "ItemRequired": [
+            
+        ],
+        "SkillRequired": [
+            "매의 눈"
+        ]
+    }
+}

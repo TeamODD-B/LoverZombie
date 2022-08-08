@@ -1,0 +1,19 @@
+{
+    "EventId" : "EscapeFromZombieUsingShotgunEnd",
+    "Type": "SubTitle",
+    "Name": "산탄총 전투 끝",
+    "ImgName": "Dog",
+    "Script": ["사실 우리는 인생을 살면서 수많은 엿같은 상황을 마주합니다.", "그 중에서는 불가피하게 피해갈 수가 없을 때가 있지요.", "그런 순간 필요한게 바로 이 12게이지 샷건 아니겠어요?", "보세요! 눈앞에 좀비들은 묵사발이 되었네요!"],
+    "OptionCount": 1,
+    "Option1": {
+        "OptionId" : "EscapeFromZombieUsingShotgunEnd_1",
+        "NextEventId" : "",
+        "Text": "12게이지 샷건은 항상 훌륭한 대화수단이지. 자 가자!",
+        "ItemRequired": [
+            
+        ],
+        "SkillRequired": [
+            
+        ]
+    }
+}

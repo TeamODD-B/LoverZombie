@@ -1,0 +1,19 @@
+{
+    "EventId" : "Leave",
+    "Type": "SubTitle",
+    "Name": "떠난다",
+    "ImgName": "Leave",
+    "Script": ["위험을 무릅쓰고 들어갈 필요는 없죠.", "당신은 발걸음을 돌렸습니다."],
+    "OptionCount": 1,
+    "Option1": {
+        "OptionId" : "Leave_1",
+        "NextEventId" : "",
+        "Text": "계속 가보자!",
+        "ItemRequired": [
+            
+        ],
+        "SkillRequired": [
+            
+        ]
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "EventId" : "Zombie",
+    "Type": "Sub",
+    "Name": "좀비 출현",
+    "ImgName": "Zombie",
+    "Script": ["골목길을 지나가던 당신은 한 무리의 좀비 떼에게 포위당했다.", "놈들은 기운이 없는 듯 매우 허약해보인다.", "벽의 상태를 보아하니 높지는 않으나 균열이 간 걸로 보아 오래 잡고 있으면 무너질 것 같다.", "이대로 죽을 순 없다. 탈출하자!"],
+    "OptionCount": 3,
+    "Option1": {
+        "OptionId" : "Zombie_1",
+        "NextEventId" : "",
+        "Text": "벽을 타고 넘어 도망친다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+            "날렵함"
+        ]
+    },
+    "Option2": {
+        "OptionId" : "Zombie_2",
+        "NextEventId" : "",
+        "Text": "빠루를 휘둘러 탈출로를 만든다.",
+        "ItemRequired": [
+            "빠루"
+        ],
+        "SkillRequired": [
+            "근력"
+        ]
+    },
+    "Option3": {
+        "OptionId" : "Zombie_3",
+        "NextEventId" : "EscapeFromZombieUsingShotgun",
+        "Text": "산탄총을 쏜다.",
+        "ItemRequired": [
+            "산탄총"
+        ],
+        "SkillRequired": [
+            "사격술"
+        ]
+    }
+}

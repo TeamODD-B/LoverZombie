@@ -1,0 +1,52 @@
+{
+    "EventId" : "Hospital",
+    "Type": "Sub",
+    "Name": "병원",
+    "ImgName": "Hospital",
+    "Script": ["길거리를 돌아다니던 당신은 종로5가의 한 병원을 발견했다.", "환자가 많은 걸 보니 의사가 꽤 유명한 것 같다."],
+    "OptionCount": 4,
+    "Option1": {
+        "OptionId" : "Hospital_1",
+        "NextEventId" : "",
+        "Text": "들어간다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option2": {
+        "OptionId" : "Hospital_2",
+        "NextEventId" : "",
+        "Text": "떠난다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option3": {
+        "OptionId" : "Hospital_3",
+        "NextEventId" : "",
+        "Text": "진찰을 예약한다.",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    },
+    "Option4": {
+        "OptionId" : "Hospital_4",
+        "NextEventId" : "",
+        "Text": "의료진들을 돕는다.",
+        "ItemRequired": [
+            
+        ],
+        "SkillRequired": [
+            "응급처치"
+        ]
+    }
+}
