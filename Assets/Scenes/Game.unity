@@ -525,7 +525,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1918740055}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &287512394
 MonoBehaviour:
@@ -539,6 +539,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e748e17b5d97f3943b08d54047c9731f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainImage: {fileID: 916511997}
+  _mainScript: {fileID: 1589084910}
+  _typingSpeed: 0.03
+  _maxLetterInOneLine: 29
+  _optionBox: {fileID: 808408751}
+  _options:
+  - {fileID: 787420693}
+  - {fileID: 2090344710}
+  - {fileID: 418950659}
+  - {fileID: 1128809379}
+  _optionTexts:
+  - {fileID: 1160043400}
+  - {fileID: 2102143051}
+  - {fileID: 1516808329}
+  - {fileID: 1802621972}
+  _optionItemTexts:
+  - {fileID: 1540017479}
+  - {fileID: 1372595172}
+  - {fileID: 1942565949}
+  - {fileID: 1982661370}
+  _optionSkillTexts:
+  - {fileID: 1018341058}
+  - {fileID: 1881127727}
+  - {fileID: 11282999}
+  - {fileID: 1803400057}
+  _itemTextColor: {r: 0.25, g: 1, b: 0.28719866, a: 1}
+  _skillTextColor: {r: 0.23113209, g: 0.5661793, b: 1, a: 1}
 --- !u!1 &358517085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1892,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &696083803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696083804}
+  - component: {fileID: 696083805}
+  m_Layer: 0
+  m_Name: EventLibraryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696083804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696083803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1918740055}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696083805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696083803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 958e86c9981defb4f9e02d7ad8298eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &782552008
 GameObject:
   m_ObjectHideFlags: 0
@@ -4061,8 +4132,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2011281471}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
         m_MethodName: IncreaseDrawSpeed
         m_Mode: 1
         m_Arguments:
@@ -4187,7 +4258,7 @@ Transform:
   - {fileID: 694844397}
   - {fileID: 651910112}
   m_Father: {fileID: 1918740055}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1888413682
 MonoBehaviour:
@@ -4237,8 +4308,9 @@ Transform:
   m_Children:
   - {fileID: 2011281470}
   - {fileID: 1544519793}
-  - {fileID: 1888413681}
   - {fileID: 287512393}
+  - {fileID: 696083804}
+  - {fileID: 1888413681}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4526,33 +4598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f351e3a27cc15b141a48a69d80092a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainImage: {fileID: 916511997}
-  _mainScript: {fileID: 1589084910}
-  _typingSpeed: 0.03
-  _maxLetterInOneLine: 29
-  _optionBox: {fileID: 808408751}
-  _options:
-  - {fileID: 787420693}
-  - {fileID: 2090344710}
-  - {fileID: 418950659}
-  - {fileID: 1128809379}
-  _optionTexts:
-  - {fileID: 1160043400}
-  - {fileID: 2102143051}
-  - {fileID: 1516808329}
-  - {fileID: 1802621972}
-  _optionItemTexts:
-  - {fileID: 1540017479}
-  - {fileID: 1372595172}
-  - {fileID: 1942565949}
-  - {fileID: 1982661370}
-  _optionSkillTexts:
-  - {fileID: 1018341058}
-  - {fileID: 1881127727}
-  - {fileID: 11282999}
-  - {fileID: 1803400057}
-  _itemTextColor: {r: 0.3136626, g: 0.8301887, b: 0.2232111, a: 1}
-  _skillTextColor: {r: 0.2516465, g: 0.33686054, b: 0.8207547, a: 1}
   _posterPanel: {fileID: 497323444}
   _saveLoadPanel: {fileID: 2040312693}
   _inGamePanel: {fileID: 1867504775}
@@ -4923,8 +4968,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2011281471}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
         m_MethodName: OptionBoxToggle
         m_Mode: 1
         m_Arguments:
