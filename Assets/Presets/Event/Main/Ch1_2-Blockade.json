@@ -1,0 +1,20 @@
+{
+    "EventId" : "Ch1_2-Blockade",
+    "Type": "Main",
+    "Name": "봉쇄선",
+    "ImgName": "Blockade",
+    "Script": ["도시 외곽에 도착했지만 차벽으로 이루어진 봉쇄선만 보일 뿐 어디에도 군인과 경찰은 보이지 않는다.", "바닥에 널린 탄피와 무기, 그리고 혈흔들이 봉쇄선은 이미 무용지물이 되었음을 말해주는 듯 하다."],
+    "OptionCount": 1,
+    "Option1": {
+        "OptionId" : "Ch1_2-Blockade_1",
+        "NextEventType" : "MainInside",
+        "NextEventId" : "Ch1_2-Blockade2",
+        "Text": "대체 무슨 일이 있었던 거야?",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    }
+}

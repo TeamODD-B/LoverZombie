@@ -1,0 +1,20 @@
+{
+    "EventId" : "Ch1_1-Prologue",
+    "Type": "Main",
+    "Name": "프롤로그",
+    "ImgName": "Prologue",
+    "Script": ["눈을 뜨자 불길에 휩싸인 도시가 보인다.", "자욱한 연기들 사이로 보이는 널부러진 차들과 깨진 유리조각들이 긴박했던 상황을 말해주는 듯 하다."],
+    "OptionCount": 1,
+    "Option1": {
+        "OptionId" : "Ch1_1-Prologue_1",
+        "NextEventType" : "MainInside",
+        "NextEventId" : "Ch1_1-Prologue2",
+        "Text": "여기가.. 어디지?",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    }
+}

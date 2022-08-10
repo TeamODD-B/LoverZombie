@@ -52,8 +52,9 @@ public class GameManager : SingletonGeneric<GameManager>
 
         SaveLoadPanelOff();
 
-        DataManager.Instance.LoadEventData("Sub");// 나중에 마지막으로 하던 이벤트 유형의 매개변수로 바꿔주기 
-        EventManager.Instance.Draw();
+        string lastEventType = DataManager.Instance.PlayerData.LastEventType;
+        string lastEventId = DataManager.Instance.PlayerData.LastEventId;
+        EventManager.Instance.LoadNextEvent(lastEventType, lastEventId);
     }
 
     public void StartNewGame()
@@ -62,7 +63,6 @@ public class GameManager : SingletonGeneric<GameManager>
 
         SaveLoadPanelOff();
 
-        DataManager.Instance.LoadEventData("Sub");// 나중에 매개변수를 Main으로 바꿔주기 
-        EventManager.Instance.Draw();
+        EventManager.Instance.LoadNextEvent("Main");
     }
 }

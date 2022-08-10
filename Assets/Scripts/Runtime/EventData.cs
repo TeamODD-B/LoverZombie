@@ -2,6 +2,7 @@
 public class Option
 {
     public string OptionId;
+    public string NextEventType;
     public string NextEventId;
     public string Text;
     public string[] ItemRequired;

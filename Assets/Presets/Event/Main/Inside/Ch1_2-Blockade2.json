@@ -1,0 +1,20 @@
+{
+    "EventId" : "Ch1_2-Blockade2",
+    "Type": "MainInside",
+    "Name": "봉쇄선",
+    "ImgName": "Blockade",
+    "Script": ["봉쇄선 근처를 돌아다니던 중 차량 바퀴에 깔려있는 한 감염자를 발견했다.", "감염자의 복장을 보니 무기를 구할 필요가 절실히 느껴진다."],
+    "OptionCount": 1,
+    "Option1": {
+        "OptionId" : "Ch1_2-Blockade2_1",
+        "NextEventType" : "Sub",
+        "NextEventId" : "",
+        "Text": "군복을 입고있잖아? ...무기가 필요하겠어",
+        "ItemRequired": [
+
+        ],
+        "SkillRequired": [
+
+        ]
+    }
+}

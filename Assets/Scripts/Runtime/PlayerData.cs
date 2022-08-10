@@ -5,6 +5,11 @@ public class PlayerData
 {
     public void Init()
     {
+        //Record
+        LastEventId = "";
+        LastEventType = "";
+        TotalEventProgressCount = 0;
+        MainEventCursor = 0;
         // Life
         Health = 100;
         Bullet = 50;
@@ -21,6 +26,12 @@ public class PlayerData
 
     // Fields
     public int[] skill;
+    // --- Record Event Progress Data
+    [SerializeField] private string lastEventType;
+    [SerializeField] private string lastEventId;
+    [SerializeField] private int totalEventProgressCount;
+    [SerializeField] private int mainEventCursor;
+    // --- Life
     [SerializeField] private int health; // 체력
     [SerializeField] private int bullet; // 총알
     // --- Item
@@ -33,8 +44,56 @@ public class PlayerData
     [SerializeField] private bool strength; // 근력
     [SerializeField] private bool shootingSkill; // 사격술
 
-
     // Properties
+    #region Record Event Progress Data
+    public string LastEventType
+    {
+        get
+        {
+            return lastEventType;
+        }
+        set
+        {
+            lastEventType = value;
+        }
+    }
+    public int TotalEventProgressCount
+    {
+        get
+        {
+            return totalEventProgressCount;
+        }
+        set
+        {
+            totalEventProgressCount = value;
+        }
+    }
+    public int MainEventCursor
+    {
+        get
+        {
+            return mainEventCursor;
+        }
+        set
+        {
+            mainEventCursor = value;
+        }
+    }
+
+    public string LastEventId
+    {
+        get
+        {
+            return lastEventId;
+        }
+        set
+        {
+            lastEventId = value;
+        }
+    }
+
+    #endregion
+
     #region Life
     public int Health // 체력
     {

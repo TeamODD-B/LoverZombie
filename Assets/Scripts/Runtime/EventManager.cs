@@ -23,10 +23,14 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private Text[] _optionSkillTexts;
     [SerializeField] private Color _itemTextColor;
     [SerializeField] private Color _skillTextColor;
+    [SerializeField] private RectTransform optionBoxBackground;
 
     [Header("----------Var")]
     private bool _isDrawingNow;
     private float _optionBoxDelayTime = 0.2f;
+    private int nextMainCount = 0;
+    private int minNextMainCountPlus = 5;
+    private int maxNextMainCountPlus = 10;
 
     protected override void Awake()
     {
@@ -36,12 +40,11 @@ public class EventManager : SingletonGeneric<EventManager>
     private void Start()
     {
         _sentences = new List<string>();
+        nextMainCount = Random.Range(minNextMainCountPlus, maxNextMainCountPlus);
     }
 
     public void LoadNextEvent(string eventType, string nextEventId = "")
     {
-        DataManager.Instance.SavePlayerData();
-        OptionBoxToggle();
         DataManager.Instance.LoadEventData(eventType, nextEventId);
         Draw();
     }
@@ -117,7 +120,7 @@ public class EventManager : SingletonGeneric<EventManager>
         _isDrawingNow = false;
 
         OptionBoxToggle();
-        PopUpOptionBox();
+        UpdateButton();
     }
 
     public void OptionBoxToggle()
@@ -138,7 +141,7 @@ public class EventManager : SingletonGeneric<EventManager>
         }
     }
 
-    private void PopUpOptionBox()
+    private void UpdateButton()
     {
         EventData eventData = DataManager.Instance.EventData;
         int optionCount = eventData.OptionCount;
@@ -173,7 +176,7 @@ public class EventManager : SingletonGeneric<EventManager>
                 optionButton = eventData.Option4;
             }
 
-            UpdateButton(optionButton, i);
+            UpdateButtonText(optionButton, i);
             bool isItemOk = CheckItemRequired(optionButton.ItemRequired);
             bool isSkillOk = CheckSkillRequired(optionButton.SkillRequired);
             if (!(isItemOk && isSkillOk))
@@ -181,14 +184,15 @@ public class EventManager : SingletonGeneric<EventManager>
                 _options[i].interactable = false;
                 continue;
             }
-            AddButtonFunction(optionButton.OptionId, optionButton.NextEventId, i);
+            AddButtonFunction(optionButton, i);
         }
+        UpdateOptionBoxBackgroundSize(optionCount);
     }
 
-    private void AddButtonFunction(string optionId, string nextEventId, int index)
+    private void AddButtonFunction(Option optionButton, int index)
     {
-        string id = optionId;
-        string nextId = nextEventId;
+        string id = optionButton.OptionId;
+        string nextId = optionButton.NextEventId;
 
         // 액션
         switch (id)
@@ -199,13 +203,25 @@ public class EventManager : SingletonGeneric<EventManager>
         }
 
         // 다음 이벤트 결정
-        if (nextId == "") // 지정 이벤트 없음. 바로 랜덤으로 다음 이벤트 재생
+        if (nextId == "") // 지정 이벤트 없음. 진행 횟수에 따라 다음 메인 혹은 랜덤 서브 이벤트 진행
         {
-            _options[index].onClick.AddListener(() => LoadNextEvent("Sub"));
+            string eventType = "";
+            int totalCount = DataManager.Instance.TotalEventProgressCount;
+            if (totalCount == nextMainCount)
+            {
+                eventType = "Main";
+                nextMainCount = Random.Range(totalCount + minNextMainCountPlus, totalCount + maxNextMainCountPlus);
+            } 
+            else
+            {
+                eventType = "Sub";
+            }
+            _options[index].onClick.AddListener(() => LoadNextEvent(eventType));
         }
-        else // 지정 이벤트 있음. 지정 이벤트 재생
+        else // 지정 이벤트 있음. 지정 이벤트 진행
         {
-            _options[index].onClick.AddListener(() => LoadNextEvent("SubTitle", nextId));
+            string eventType = optionButton.NextEventType;
+            _options[index].onClick.AddListener(() => LoadNextEvent(eventType, nextId));
         }
     }
 
@@ -292,7 +308,7 @@ public class EventManager : SingletonGeneric<EventManager>
         }
     }
 
-    private void UpdateButton(Option optionButton, int index)
+    private void UpdateButtonText(Option optionButton, int index)
     {
         Option targetOptionButton = optionButton;
         string[] items = targetOptionButton.ItemRequired;
@@ -344,5 +360,11 @@ public class EventManager : SingletonGeneric<EventManager>
         //Button Script
         string buttonScript = targetOptionButton.Text;
         _optionTexts[index].text = buttonScript;
+    }
+
+    private void UpdateOptionBoxBackgroundSize(int optionCount)
+    {
+        int height = 150 * optionCount;
+        optionBoxBackground.sizeDelta = new Vector2(optionBoxBackground.rect.width, height);
     }
 }

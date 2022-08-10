@@ -7,6 +7,7 @@
     "OptionCount": 4,
     "Option1": {
         "OptionId" : "PoliceOffice_1",
+        "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "전쟁 전 꿈이었던 9급 경찰 공무원에 도전한다.",
         "ItemRequired": [
@@ -18,6 +19,7 @@
     },
     "Option2": {
         "OptionId" : "PoliceOffice_2",
+        "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "길을 묻는다.",
         "ItemRequired": [
@@ -29,6 +31,7 @@
     },
     "Option3": {
         "OptionId" : "PoliceOffice_3",
+        "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "총을 쏘며 돌진한다.",
         "ItemRequired": [
@@ -40,6 +43,7 @@
     },
     "Option4": {
         "OptionId" : "PoliceOffice_4",
+        "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "용병 일거리가 없나 물어본다.",
         "ItemRequired": [

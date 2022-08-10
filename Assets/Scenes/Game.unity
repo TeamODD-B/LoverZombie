@@ -545,27 +545,28 @@ MonoBehaviour:
   _maxLetterInOneLine: 29
   _optionBox: {fileID: 808408751}
   _options:
-  - {fileID: 787420693}
-  - {fileID: 2090344710}
-  - {fileID: 418950659}
   - {fileID: 1128809379}
+  - {fileID: 418950659}
+  - {fileID: 2090344710}
+  - {fileID: 787420693}
   _optionTexts:
-  - {fileID: 1160043400}
-  - {fileID: 2102143051}
-  - {fileID: 1516808329}
   - {fileID: 1802621972}
+  - {fileID: 1516808329}
+  - {fileID: 2102143051}
+  - {fileID: 1160043400}
   _optionItemTexts:
-  - {fileID: 1540017479}
-  - {fileID: 1372595172}
-  - {fileID: 1942565949}
   - {fileID: 1982661370}
+  - {fileID: 1942565949}
+  - {fileID: 1372595172}
+  - {fileID: 1540017479}
   _optionSkillTexts:
-  - {fileID: 1018341058}
-  - {fileID: 1881127727}
-  - {fileID: 11282999}
   - {fileID: 1803400057}
+  - {fileID: 11282999}
+  - {fileID: 1881127727}
+  - {fileID: 1018341058}
   _itemTextColor: {r: 0.25, g: 1, b: 0.28719866, a: 1}
   _skillTextColor: {r: 0.23113209, g: 0.5661793, b: 1, a: 1}
+  optionBoxBackground: {fileID: 1261073983}
 --- !u!1 &358517085
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +762,7 @@ RectTransform:
   - {fileID: 11282998}
   - {fileID: 1516808328}
   m_Father: {fileID: 808408752}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -811,7 +812,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 418950660}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
+        m_MethodName: OptionBoxToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &418950660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,7 +2140,7 @@ RectTransform:
   - {fileID: 1018341057}
   - {fileID: 1160043399}
   m_Father: {fileID: 808408752}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2177,7 +2190,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 787420694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
+        m_MethodName: OptionBoxToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &787420694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,7 +2251,6 @@ GameObject:
   m_Component:
   - component: {fileID: 808408752}
   - component: {fileID: 808408754}
-  - component: {fileID: 808408753}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -2246,6 +2270,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1261073983}
   - {fileID: 787420692}
   - {fileID: 2090344708}
   - {fileID: 418950657}
@@ -2253,41 +2278,11 @@ RectTransform:
   m_Father: {fileID: 1867504776}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -391}
-  m_SizeDelta: {x: 1000, y: 700}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &808408753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808408751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 219}
+  m_SizeDelta: {x: 1000, y: 613}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &808408754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2722,7 +2717,7 @@ RectTransform:
   - {fileID: 1803400056}
   - {fileID: 1802621971}
   m_Father: {fileID: 808408752}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2772,7 +2767,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128809380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
+        m_MethodName: OptionBoxToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1128809380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,6 +2936,82 @@ RectTransform:
   m_AnchoredPosition: {x: 67, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1261073982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1261073983}
+  - component: {fileID: 1261073985}
+  - component: {fileID: 1261073984}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1261073983
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261073982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808408752}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: 1000, y: 150}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1261073984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261073982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1261073985
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261073982}
+  m_CullTransparentMesh: 1
 --- !u!1 &1267323140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,6 +3336,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerData:
     skill: 
+    lastEventType: 
+    lastEventId: 
+    totalEventProgressCount: 0
+    mainEventCursor: 0
     health: 0
     bullet: 0
     crowBar: 0
@@ -3271,28 +3358,34 @@ MonoBehaviour:
     OptionCount: 0
     Option1:
       OptionId: 
+      NextEventType: 
       NextEventId: 
       Text: 
       ItemRequired: []
       SkillRequired: []
     Option2:
       OptionId: 
+      NextEventType: 
       NextEventId: 
       Text: 
       ItemRequired: []
       SkillRequired: []
     Option3:
       OptionId: 
+      NextEventType: 
       NextEventId: 
       Text: 
       ItemRequired: []
       SkillRequired: []
     Option4:
       OptionId: 
+      NextEventType: 
       NextEventId: 
       Text: 
       ItemRequired: []
       SkillRequired: []
+  MainEventCursor: 0
+  TotalEventProgressCount: 0
 --- !u!1 &1561849316
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,7 +4808,7 @@ RectTransform:
   - {fileID: 1881127726}
   - {fileID: 2102143050}
   m_Father: {fileID: 808408752}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4765,7 +4858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2090344711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287512394}
+        m_TargetAssemblyTypeName: EventManager, Assembly-CSharp
+        m_MethodName: OptionBoxToggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2090344711
 MonoBehaviour:
   m_ObjectHideFlags: 0
