@@ -1,14 +1,14 @@
 {
-    "EventId" : "Ch1_1-Prologue2",
-    "Type": "MainInside",
+    "EventId" : "Prologue1",
+    "Type": "Main/Prologue",
     "Name": "프롤로그",
-    "ImgName": "Prologue",
+    "ImgName": "",
     "Script": ["사람들의 고함 소리와 총성이 간간히 들려온다.", "본능적으로 이 도시가 아직 위험함을 깨닫는다."],
     "OptionCount": 1,
     "Option1": {
-        "OptionId" : "Ch1_1-Prologue2_1",
-        "NextEventType" : "MainInside",
-        "NextEventId" : "Ch1_1-Prologue3",
+        "OptionId" : "Prologue1_1",
+        "NextEventType" : "Main/Prologue",
+        "NextEventId" : "Prologue2",
         "Text": "어서 빠져나가자.",
         "ItemRequired": [
 

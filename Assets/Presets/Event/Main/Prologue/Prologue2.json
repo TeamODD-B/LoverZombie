@@ -1,14 +1,14 @@
 {
-    "EventId" : "Ch1_1-Prologue3",
-    "Type": "MainInside",
+    "EventId" : "Prologue2",
+    "Type": "Main/Prologue",
     "Name": "프롤로그",
-    "ImgName": "Prologue",
+    "ImgName": "",
     "Script": ["소지품을 점검하던 중 근처 차량의 라디오에서 흘러나오는 음성을 듣는다.", "잡음이 심하나 도시가 봉쇄됬다는 말인 것 같다."],
     "OptionCount": 1,
     "Option1": {
-        "OptionId" : "Ch1_1-Prologue3_1",
-        "NextEventType" : "MainInside",
-        "NextEventId" : "Ch1_1-Prologue4",
+        "OptionId" : "Prologue2_1",
+        "NextEventType" : "Main/Prologue",
+        "NextEventId" : "PrologueEnd",
         "Text": "나는 꼭 살아남을 거야.",
         "ItemRequired": [
 

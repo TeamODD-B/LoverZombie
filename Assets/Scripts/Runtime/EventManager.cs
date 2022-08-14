@@ -12,8 +12,8 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private Text _mainScript;
     private List<string> _sentences;
     private bool _isTypingNow;
-    [SerializeField] [Range(0.005f, 0.1f)] private float _typingSpeed = 0.03f;
-    [SerializeField] private int _maxLetterInOneLine = 29;
+    private float _typingSpeed = 0.03f;
+    private int _maxLetterInOneLine = 30;
 
     [Header("----------Option")]
     [SerializeField] private GameObject _optionBox;
@@ -24,6 +24,16 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private Color _itemTextColor;
     [SerializeField] private Color _skillTextColor;
     [SerializeField] private RectTransform optionBoxBackground;
+
+    [Header("----------ScrollView")]
+    [SerializeField] private RectTransform _scrollView;
+    [SerializeField] private ScrollRect _scrollRect;
+    private float _InitScrollViewHeight;
+    [SerializeField] private Transform _content; 
+    [SerializeField] private Transform _textGroup; 
+    [SerializeField] private Transform _imageGroup;
+    [SerializeField] private RectTransform _dummyObject;
+    private float _InitDummyObjectHeight;
 
     [Header("----------Var")]
     private bool _isDrawingNow;
@@ -41,6 +51,8 @@ public class EventManager : SingletonGeneric<EventManager>
     {
         _sentences = new List<string>();
         nextMainCount = Random.Range(minNextMainCountPlus, maxNextMainCountPlus);
+        _InitScrollViewHeight = _scrollView.rect.height;
+        _InitDummyObjectHeight = _dummyObject.rect.height;
     }
 
     public void LoadNextEvent(string eventType, string nextEventId = "")
@@ -65,30 +77,67 @@ public class EventManager : SingletonGeneric<EventManager>
         }
         _isDrawingNow = true;
 
-        // 메인 스크립트 초기화
-        _sentences.Clear();
+        string currentEventType = DataManager.Instance.EventData.Type;
+        //새 이벤트 시작시 이전 이벤트에 사용된 오브젝트들 지우기
+        if (currentEventType == "Main" || currentEventType == "Sub")
+        {
+            EventManager.Instance.ClearScrollView();
+        }
+
+        //스크롤뷰 사이즈 조정
+        UpdateScrollViewSize();
+
+        //오브젝트 가져오기
+        string imageName = DataManager.Instance.EventData.ImgName;
+        if (imageName != "")
+        {
+            _mainImage = ObjectManager.Instance.GetImage();
+            _mainImage.transform.SetParent(_content);
+        }
+        _mainScript = ObjectManager.Instance.GetText();
+        _mainScript.transform.SetParent(_content);
+
+        //더미 오브젝트 최하위로 이동
+        _dummyObject.SetAsLastSibling();
+
+        // 메인 스크립트 초기화 후 다시 담기
         _mainScript.text = "";
+        _sentences.Clear();
         string[] lines = DataManager.Instance.EventData.Script;
         foreach (string line in lines)
         {
             _sentences.Add(line);
         }
 
+        //텍스트 오브젝트 사이즈 조정
+        int totalCount = 0;
+        for (int i = 0; i < _sentences.Count; i++)
+        {
+            totalCount += (int)Mathf.Ceil(_sentences[i].Length / (float)29);
+        }
+        int height = 60 * totalCount;
+        _mainScript.rectTransform.sizeDelta = new Vector2(_mainScript.rectTransform.rect.width, height);
+
+        //더미 오브젝트 사이즈 조정
+        UpdateDummyObjectSize(imageName);
+
         // Start Draw
-        StartCoroutine(DrawRoutine());
+        StartCoroutine(DrawRoutine(imageName));
     }
 
-    private IEnumerator DrawRoutine()
+    private IEnumerator DrawRoutine(string imageName)
     {
         // Image
-        string imageName = DataManager.Instance.EventData.ImgName;
-        byte[] byteTexture = System.IO.File.ReadAllBytes($"Assets/Art/Sprites/{imageName}.png"); //나중에 경로 변수로 바꿔주기
-        if (byteTexture.Length > 0)
+        if (imageName != "")
         {
-            Texture2D texture = new Texture2D(0, 0);
-            texture.LoadImage(byteTexture);
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-            _mainImage.sprite = sprite;
+            byte[] byteTexture = System.IO.File.ReadAllBytes($"Assets/Art/Sprites/{imageName}.png"); //나중에 경로 변수로 바꿔주기
+            if (byteTexture.Length > 0)
+            {
+                Texture2D texture = new Texture2D(0, 0);
+                texture.LoadImage(byteTexture);
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                _mainImage.sprite = sprite;
+            }
         }
 
         // Script
@@ -110,8 +159,8 @@ public class EventManager : SingletonGeneric<EventManager>
                 yield return new WaitForSeconds(_typingSpeed);
             }
 
+            _mainScript.text += "\n";
             letterCount = 0;
-            _mainScript.text += "\n\n";
         }
 
         _typingSpeed = 0.03f;
@@ -119,8 +168,63 @@ public class EventManager : SingletonGeneric<EventManager>
         _isTypingNow = false;
         _isDrawingNow = false;
 
+        //버튼 활성화
         OptionBoxToggle();
         UpdateButton();
+    }
+
+    private void UpdateScrollViewSize()
+    {
+        int optionCount = DataManager.Instance.EventData.OptionCount;
+        int number = 0;
+        if (optionCount == 1)
+        {
+            number = 3;
+        }
+        else if (optionCount == 2)
+        {
+            number = 2;
+        }
+        else if (optionCount == 3)
+        {
+            number = 1;
+        }
+        else if (optionCount == 4)
+        {
+            number = 0;
+        }
+        float height = _InitScrollViewHeight + (150 * number);
+        _scrollView.sizeDelta = new Vector2(_scrollView.rect.width, height);
+    }
+
+    private void UpdateDummyObjectSize(string imageName)
+    {
+        string eventType = DataManager.Instance.EventData.Type;
+        if (eventType == "Main" || eventType == "Sub")
+        {
+            _dummyObject.sizeDelta = new Vector2(_dummyObject.rect.width, _InitDummyObjectHeight);
+            _scrollRect.normalizedPosition = new Vector2(0, 1);
+            return;
+        }
+
+        float spacing = 10f;
+
+        //Image
+        bool ImageExists = imageName != "";
+        float imageHeight = 0;
+        if (ImageExists)
+        {
+            imageHeight = _mainImage.rectTransform.sizeDelta.y;
+        }
+
+        //Text
+        float scriptHeight = _mainScript.rectTransform.sizeDelta.y;
+
+        //Calculate
+        float heightSum = imageHeight + scriptHeight + spacing;
+        float finalHeight = _dummyObject.rect.height + heightSum;
+        _dummyObject.sizeDelta = new Vector2(_dummyObject.rect.width, finalHeight);
+        _scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 
     public void OptionBoxToggle()
@@ -366,5 +470,28 @@ public class EventManager : SingletonGeneric<EventManager>
     {
         int height = 150 * optionCount;
         optionBoxBackground.sizeDelta = new Vector2(optionBoxBackground.rect.width, height);
+    }
+
+    public void ClearScrollView()
+    {
+        Transform[] children = new Transform[_content.childCount];
+        for (int i = 0; i < _content.childCount; i++)
+        {
+            children[i] = _content.GetChild(i);
+        }
+
+        for (int i=0; i<children.Length; i++)
+        {
+            if (children[i].tag == "Script Text")
+            {
+                children[i].SetParent(_textGroup);
+                children[i].gameObject.SetActive(false);
+            }
+            else if (children[i].tag == "Illust Image")
+            {
+                children[i].transform.SetParent(_imageGroup);
+                children[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

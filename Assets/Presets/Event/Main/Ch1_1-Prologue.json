@@ -7,8 +7,8 @@
     "OptionCount": 1,
     "Option1": {
         "OptionId" : "Ch1_1-Prologue_1",
-        "NextEventType" : "MainInside",
-        "NextEventId" : "Ch1_1-Prologue2",
+        "NextEventType" : "Main/Prologue",
+        "NextEventId" : "Prologue1",
         "Text": "여기가.. 어디지?",
         "ItemRequired": [
 

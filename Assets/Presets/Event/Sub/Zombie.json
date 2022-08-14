@@ -31,8 +31,8 @@
     },
     "Option3": {
         "OptionId" : "Zombie_3",
-        "NextEventType" : "SubInside",
-        "NextEventId" : "EscapeFromZombieUsingShotgun",
+        "NextEventType" : "Sub/EscapeFromZombieUsingShotgun",
+        "NextEventId" : "EscapeFromZombieUsingShotgun1",
         "Text": "산탄총을 쏜다.",
         "ItemRequired": [
             "산탄총"

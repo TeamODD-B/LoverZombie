@@ -7,8 +7,8 @@
     "OptionCount": 1,
     "Option1": {
         "OptionId" : "Ch1_2-Blockade_1",
-        "NextEventType" : "MainInside",
-        "NextEventId" : "Ch1_2-Blockade2",
+        "NextEventType" : "Main/Blockade",
+        "NextEventId" : "BlockadeEnd",
         "Text": "대체 무슨 일이 있었던 거야?",
         "ItemRequired": [
 

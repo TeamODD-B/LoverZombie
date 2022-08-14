@@ -1,13 +1,13 @@
 {
-    "EventId" : "EscapeFromZombieUsingShotgun",
-    "Type": "SubInside",
+    "EventId" : "EscapeFromZombieUsingShotgun1",
+    "Type": "Sub/EscapeFromZombieUsingShotgun",
     "Name": "산탄총 전투",
-    "ImgName": "Pistol",
+    "ImgName": "",
     "Script": ["매캐한 화약냄새를 뿜으며 당신은 산탄총을 연신 쏘아댔습니다."],
     "OptionCount": 1,
     "Option1": {
-        "OptionId" : "EscapeFromZombieUsingShotgun_1",
-        "NextEventType" : "SubInside",
+        "OptionId" : "EscapeFromZombieUsingShotgun1_1",
+        "NextEventType" : "Sub/EscapeFromZombieUsingShotgun",
         "NextEventId" : "EscapeFromZombieUsingShotgunEnd",
         "Text": "빵야 빵야!",
         "ItemRequired": [

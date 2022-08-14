@@ -19,7 +19,7 @@
     },
     "Option2": {
         "OptionId" : "Shop_2",
-        "NextEventType" : "SubInside",
+        "NextEventType" : "Sub/Common",
         "NextEventId" : "Leave",
         "Text": "떠난다.",
         "ItemRequired": [
