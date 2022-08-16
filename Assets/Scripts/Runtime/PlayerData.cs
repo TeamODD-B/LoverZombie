@@ -31,6 +31,9 @@ public class PlayerData
     [SerializeField] private string lastEventId;
     [SerializeField] private int totalEventProgressCount;
     [SerializeField] private int mainEventCursor;
+    // --- Record Settings Data
+    [SerializeField] private float backgroundVolume;
+    [SerializeField] private float effectVolume;
     // --- Life
     [SerializeField] private int health; // Ã¼·Â
     [SerializeField] private int bullet; // ÃÑ¾Ë
@@ -92,6 +95,32 @@ public class PlayerData
         }
     }
 
+    #endregion
+
+    #region Settings Data
+    public float BackgroundVolume
+    {
+        get
+        {
+            return backgroundVolume;
+        }
+        set
+        {
+            backgroundVolume = value;
+        }
+    }
+
+    public float EffectVolume
+    {
+        get
+        {
+            return effectVolume;
+        }
+        set
+        {
+            effectVolume = value;
+        }
+    }
     #endregion
 
     #region Life
