@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
 using UnityEngine.UI;
 
 public class AudioManager : SingletonGeneric<AudioManager>
 {
     //Audio Source
     [SerializeField] private AudioSource _backgroundPlayer;
-    [SerializeField] private AudioSource [] _sfxPlayers;
+    [SerializeField] private AudioSource[] _sfxPlayers;
 
     //Audio Setting Slider
     [SerializeField] private Slider backgroundSlider;
@@ -21,7 +20,7 @@ public class AudioManager : SingletonGeneric<AudioManager>
     private int _sfxCursor = 0;
     private float _initBackgroundVolume = 1f;
     private float _initEffectVolume = 1f;
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -79,7 +78,7 @@ public class AudioManager : SingletonGeneric<AudioManager>
         EffectSlider.value = playerData.EffectVolume;
     }
 
-    public void UpdateBackgroundVolume(float value) 
+    public void UpdateBackgroundVolume(float value)
     {
         _backgroundPlayer.volume = value;
         DataManager.Instance.PlayerData.BackgroundVolume = value;
@@ -103,7 +102,7 @@ public class AudioManager : SingletonGeneric<AudioManager>
     {
         // _sfxCursor을 정하는 계산식
         _sfxCursor = (_sfxCursor + 1) % _sfxPlayers.Length;
-        
+
         // 클립 교체
         switch (action)
         {

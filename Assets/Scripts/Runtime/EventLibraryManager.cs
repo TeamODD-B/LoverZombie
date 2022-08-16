@@ -23,7 +23,8 @@ public class EventLibraryManager : SingletonGeneric<EventLibraryManager>
         DataManager.Instance.PlayerData.Bullet += bulletCount;
     }
 
-    public void PlaySfx(string type) {
+    public void PlaySfx(string type)
+    {
         AudioManager.Instance.PlaySfx(type);
     }
 
@@ -39,7 +40,7 @@ public class EventLibraryManager : SingletonGeneric<EventLibraryManager>
     {
         Color fadeInColor = new Color(1, 1, 1, 1);
         Color fadeOutColor = new Color(1, 1, 1, 0);
-        
+
         _bulletMark.color = fadeInColor;
         yield return new WaitForSeconds(bulletMarkFadeOutTime);
 

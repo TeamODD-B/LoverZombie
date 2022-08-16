@@ -8,3 +8,5 @@ public class Setting
     public float effectVolume;
 }
 
+
+

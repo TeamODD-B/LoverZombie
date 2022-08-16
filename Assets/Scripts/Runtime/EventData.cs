@@ -16,7 +16,7 @@ public class EventData
     public string Type;
     public string Name;
     public string ImgName;
-    public string [] Script;
+    public string[] Script;
     public int OptionCount;
     public Option Option1;
     public Option Option2;

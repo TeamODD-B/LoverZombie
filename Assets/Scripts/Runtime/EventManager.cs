@@ -29,8 +29,8 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private RectTransform _scrollView;
     [SerializeField] private ScrollRect _scrollRect;
     private float _InitScrollViewHeight;
-    [SerializeField] private Transform _content; 
-    [SerializeField] private Transform _textGroup; 
+    [SerializeField] private Transform _content;
+    [SerializeField] private Transform _textGroup;
     [SerializeField] private Transform _imageGroup;
     [SerializeField] private RectTransform _dummyObject;
 
@@ -305,7 +305,7 @@ public class EventManager : SingletonGeneric<EventManager>
             {
                 eventType = "Main";
                 nextMainCount = Random.Range(totalCount + minNextMainCountPlus, totalCount + maxNextMainCountPlus);
-            } 
+            }
             else
             {
                 eventType = "Sub";
@@ -470,7 +470,7 @@ public class EventManager : SingletonGeneric<EventManager>
             children[i] = _content.GetChild(i);
         }
 
-        for (int i=0; i<children.Length; i++)
+        for (int i = 0; i < children.Length; i++)
         {
             if (children[i].tag == "Script Text")
             {

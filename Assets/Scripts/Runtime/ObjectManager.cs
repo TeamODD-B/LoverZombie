@@ -10,12 +10,12 @@ public class ObjectManager : SingletonGeneric<ObjectManager>
     [SerializeField] private RectTransform _imageGroup;
 
     //Prefab
-    [SerializeField] private GameObject _textPrefab; 
+    [SerializeField] private GameObject _textPrefab;
     [SerializeField] private GameObject _imagePrefab;
 
     //List
-    [SerializeField] private List<Text> _textList; 
-    [SerializeField] private List<Image> _imageList; 
+    [SerializeField] private List<Text> _textList;
+    [SerializeField] private List<Image> _imageList;
 
     protected override void Awake()
     {
@@ -41,7 +41,7 @@ public class ObjectManager : SingletonGeneric<ObjectManager>
             if (!text.gameObject.activeSelf)
             {
                 text.gameObject.SetActive(true);
-                return text; 
+                return text;
             }
         }
 
@@ -57,7 +57,7 @@ public class ObjectManager : SingletonGeneric<ObjectManager>
         return image;
     }
 
-    public Image GetImage() 
+    public Image GetImage()
     {
         for (int i = 0; i < _imageList.Count; i++)
         {

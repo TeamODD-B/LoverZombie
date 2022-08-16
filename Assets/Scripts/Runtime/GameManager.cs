@@ -81,7 +81,7 @@ public class GameManager : SingletonGeneric<GameManager>
         {
             _settingsPanel.SetActive(false);
         }
-        else 
+        else
         {
             _settingsPanel.SetActive(true);
         }

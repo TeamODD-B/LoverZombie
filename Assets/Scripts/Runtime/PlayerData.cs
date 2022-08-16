@@ -152,7 +152,7 @@ public class PlayerData
     #region Item
     public bool CrowBar //쇠지렛대(빠루)
     {
-        get 
+        get
         {
             return crowBar;
         }

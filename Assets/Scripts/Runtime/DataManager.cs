@@ -10,7 +10,7 @@ public class DataManager : SingletonGeneric<DataManager>
     public EventData EventData = new EventData();
     // Path
     private string _playerDataPath;
-    public string PlayerDataPath 
+    public string PlayerDataPath
     {
         get
         {
@@ -62,7 +62,7 @@ public class DataManager : SingletonGeneric<DataManager>
         //2. 폴더 안에 Json 파일들을 작성해줘야함. 에셋번들 즉, 패치를 다운받아야 한다.
         //2-1. 무료 서버 찾아서 이용해보자. 
         #endregion
-        
+
         // 메인 이벤트
         bool isMainDirectoryExists = Directory.Exists(_mainEventDataPath);
         if (!isMainDirectoryExists)
@@ -146,7 +146,8 @@ public class DataManager : SingletonGeneric<DataManager>
                     break;
             }
         }
-        else {
+        else
+        {
             eventName += ".json";
         }
 
