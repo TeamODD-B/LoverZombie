@@ -35,17 +35,17 @@ public class PlayerData
     [SerializeField] private float backgroundVolume;
     [SerializeField] private float effectVolume;
     // --- Life
-    [SerializeField] private int health; // Ã¼·Â
-    [SerializeField] private int bullet; // ÃÑ¾Ë
+    [SerializeField] private int health; // ì²´ë ¥
+    [SerializeField] private int bullet; // ì´ì•Œ
     // --- Item
-    [SerializeField] private bool crowBar; // ¼èÁö·¿´ë(ºü·ç)
-    [SerializeField] private bool shotgun; // »êÅºÃÑ
-    [SerializeField] private bool rainCoat; // ¿ìºñ
-    [SerializeField] private bool umbrella; // ¿ì»ê
+    [SerializeField] private bool crowBar; // ì‡ ì§€ë ›ëŒ€(ë¹ ë£¨)
+    [SerializeField] private bool shotgun; // ì‚°íƒ„ì´
+    [SerializeField] private bool rainCoat; // ìš°ë¹„
+    [SerializeField] private bool umbrella; // ìš°ì‚°
     //  --- Skill
-    [SerializeField] private bool dexterity; // ³¯·ÆÇÔ
-    [SerializeField] private bool strength; // ±Ù·Â
-    [SerializeField] private bool shootingSkill; // »ç°İ¼ú
+    [SerializeField] private bool dexterity; // ë‚ ë µí•¨
+    [SerializeField] private bool strength; // ê·¼ë ¥
+    [SerializeField] private bool shootingSkill; // ì‚¬ê²©ìˆ 
 
     // Properties
     #region Record Event Progress Data
@@ -124,7 +124,7 @@ public class PlayerData
     #endregion
 
     #region Life
-    public int Health // Ã¼·Â
+    public int Health // ì²´ë ¥
     {
         get
         {
@@ -136,7 +136,7 @@ public class PlayerData
         }
     }
 
-    public int Bullet // ÃÑ¾Ë
+    public int Bullet // ì´ì•Œ
     {
         get
         {
@@ -150,7 +150,7 @@ public class PlayerData
     #endregion
 
     #region Item
-    public bool CrowBar //¼èÁö·¿´ë(ºü·ç)
+    public bool CrowBar //ì‡ ì§€ë ›ëŒ€(ë¹ ë£¨)
     {
         get 
         {
@@ -162,7 +162,7 @@ public class PlayerData
         }
     }
 
-    public bool Shotgun // »êÅºÃÑ
+    public bool Shotgun // ì‚°íƒ„ì´
     {
         get
         {
@@ -174,7 +174,7 @@ public class PlayerData
         }
     }
 
-    public bool RainCoat //¿ìºñ
+    public bool RainCoat //ìš°ë¹„
     {
         get
         {
@@ -186,7 +186,7 @@ public class PlayerData
         }
     }
 
-    public bool Umbrella // ¿ì»ê
+    public bool Umbrella // ìš°ì‚°
     {
         get
         {
@@ -200,7 +200,7 @@ public class PlayerData
     #endregion
 
     #region Skill
-    public bool Dexterity // ³¯·ÆÇÔ
+    public bool Dexterity // ë‚ ë µí•¨
     {
         get
         {
@@ -212,7 +212,7 @@ public class PlayerData
         }
     }
 
-    public bool Strength // ±Ù·Â
+    public bool Strength // ê·¼ë ¥
     {
         get
         {
@@ -224,7 +224,7 @@ public class PlayerData
         }
     }
 
-    public bool ShootingSkill // »ç°İ¼ú
+    public bool ShootingSkill // ì‚¬ê²©ìˆ 
     {
         get
         {

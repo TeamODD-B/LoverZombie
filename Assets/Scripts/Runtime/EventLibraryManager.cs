@@ -32,7 +32,7 @@ public class EventLibraryManager : SingletonGeneric<EventLibraryManager>
         DecreaseBullet(10);
         PlaySfx("Shotgun");
         StartCoroutine(bulletMarkFadeInOut());
-        Debug.Log($"³²Àº ÃÑ¾Ë °¹¼ö : {DataManager.Instance.PlayerData.Bullet}");
+        Debug.Log($"ë‚¨ì€ ì´ì•Œ ê°¯ìˆ˜ : {DataManager.Instance.PlayerData.Bullet}");
     }
 
     private IEnumerator bulletMarkFadeInOut()

@@ -6,8 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class CameraResolution : MonoBehaviour
 {
-
-
     #region Pola
     private int ScreenSizeX = 0;
     private int ScreenSizeY = 0;

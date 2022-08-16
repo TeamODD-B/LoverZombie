@@ -101,10 +101,10 @@ public class AudioManager : SingletonGeneric<AudioManager>
 
     public void PlaySfx(string action)
     {
-        // _sfxCursorÀ» Á¤ÇÏ´Â °è»ê½Ä
+        // _sfxCursorì„ ì •í•˜ëŠ” ê³„ì‚°ì‹
         _sfxCursor = (_sfxCursor + 1) % _sfxPlayers.Length;
         
-        // Å¬¸³ ±³Ã¼
+        // í´ë¦½ êµì²´
         switch (action)
         {
             case "Shotgun":
@@ -112,7 +112,7 @@ public class AudioManager : SingletonGeneric<AudioManager>
                 break;
         }
 
-        // Àç»ı
+        // ì¬ìƒ
         _sfxPlayers[_sfxCursor].Play();
     }
 }

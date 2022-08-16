@@ -45,7 +45,7 @@ public class DataManager : SingletonGeneric<DataManager>
 
     private void InitPath()
     {
-        //¸ğ¹ÙÀÏ ºôµå½Ã dataPath¸¦ persistentDataPath·Î º¯°æÇÒ °Í
+        //ëª¨ë°”ì¼ ë¹Œë“œì‹œ dataPathë¥¼ persistentDataPathë¡œ ë³€ê²½í•  ê²ƒ
         _playerDataPath = Path.Combine(Application.persistentDataPath, "PlayerData.json");
         _mainEventDataPath = Path.Combine(Application.dataPath, "Presets/Event/Main");
         _subEventDataPath = Path.Combine(Application.dataPath, "Presets/Event/Sub");
@@ -57,17 +57,17 @@ public class DataManager : SingletonGeneric<DataManager>
         _mainEventDataFileNameList = new List<string>();
         _subEventDataFileNameList = new List<string>();
 
-        #region ¸ğ¹ÙÀÏ ºôµå ½Ã ¾ÕÀ¸·Î Ãß°¡ÇÒ ³»¿ë 
-        //1. JsonÆÄÀÏµéÀÌ ÀúÀåµÇ´Â Æú´õ°¡ Á¸ÀçÇÏ´ÂÁö °Ë»çÇÏ°í ¾ø´Ù¸é ¸¸µé¾îÁà¾ßÇÔ.
-        //2. Æú´õ ¾È¿¡ Json ÆÄÀÏµéÀ» ÀÛ¼ºÇØÁà¾ßÇÔ. ¿¡¼Â¹øµé Áï, ÆĞÄ¡¸¦ ´Ù¿î¹Ş¾Æ¾ß ÇÑ´Ù.
-        //2-1. ¹«·á ¼­¹ö Ã£¾Æ¼­ ÀÌ¿ëÇØº¸ÀÚ. 
+        #region ëª¨ë°”ì¼ ë¹Œë“œ ì‹œ ì•ìœ¼ë¡œ ì¶”ê°€í•  ë‚´ìš© 
+        //1. JsoníŒŒì¼ë“¤ì´ ì €ì¥ë˜ëŠ” í´ë”ê°€ ì¡´ì¬í•˜ëŠ”ì§€ ê²€ì‚¬í•˜ê³  ì—†ë‹¤ë©´ ë§Œë“¤ì–´ì¤˜ì•¼í•¨.
+        //2. í´ë” ì•ˆì— Json íŒŒì¼ë“¤ì„ ì‘ì„±í•´ì¤˜ì•¼í•¨. ì—ì…‹ë²ˆë“¤ ì¦‰, íŒ¨ì¹˜ë¥¼ ë‹¤ìš´ë°›ì•„ì•¼ í•œë‹¤.
+        //2-1. ë¬´ë£Œ ì„œë²„ ì°¾ì•„ì„œ ì´ìš©í•´ë³´ì. 
         #endregion
         
-        // ¸ŞÀÎ ÀÌº¥Æ®
+        // ë©”ì¸ ì´ë²¤íŠ¸
         bool isMainDirectoryExists = Directory.Exists(_mainEventDataPath);
         if (!isMainDirectoryExists)
         {
-            Debug.Log("¸ŞÀÎ ÀÌº¥Æ® ÀúÀå Æú´õ Á¸ÀçÇÏÁö ¾ÊÀ½!");
+            Debug.Log("ë©”ì¸ ì´ë²¤íŠ¸ ì €ì¥ í´ë” ì¡´ì¬í•˜ì§€ ì•ŠìŒ!");
         }
         else
         {
@@ -75,7 +75,7 @@ public class DataManager : SingletonGeneric<DataManager>
             foreach (var file in directory.GetFiles())
             {
                 string fullPath = Path.Combine(_mainEventDataPath, file.Name);
-                bool isJsonFile = Path.GetExtension(fullPath) == ".json"; //metaÆÄÀÏ°ú jsonÆÄÀÏÁß jsonÆÄÀÏ¸¸
+                bool isJsonFile = Path.GetExtension(fullPath) == ".json"; //metaíŒŒì¼ê³¼ jsoníŒŒì¼ì¤‘ jsoníŒŒì¼ë§Œ
                 if (!isJsonFile)
                 {
                     continue;
@@ -84,11 +84,11 @@ public class DataManager : SingletonGeneric<DataManager>
             }
         }
 
-        // ¼­ºê ÀÌº¥Æ®
+        // ì„œë¸Œ ì´ë²¤íŠ¸
         bool isSubDirectoryExists = Directory.Exists(_subEventDataPath);
         if (!isSubDirectoryExists)
         {
-            Debug.Log("¼­ºê ÀÌº¥Æ® ÀúÀå Æú´õ Á¸ÀçÇÏÁö ¾ÊÀ½!");
+            Debug.Log("ì„œë¸Œ ì´ë²¤íŠ¸ ì €ì¥ í´ë” ì¡´ì¬í•˜ì§€ ì•ŠìŒ!");
         }
         else
         {
@@ -96,7 +96,7 @@ public class DataManager : SingletonGeneric<DataManager>
             foreach (var file in directory.GetFiles())
             {
                 string fullPath = Path.Combine(_subEventDataPath, file.Name);
-                bool isJsonFile = Path.GetExtension(fullPath) == ".json"; //metaÆÄÀÏ°ú jsonÆÄÀÏÁß jsonÆÄÀÏ¸¸
+                bool isJsonFile = Path.GetExtension(fullPath) == ".json"; //metaíŒŒì¼ê³¼ jsoníŒŒì¼ì¤‘ jsoníŒŒì¼ë§Œ
                 if (!isJsonFile)
                 {
                     continue;
@@ -138,7 +138,7 @@ public class DataManager : SingletonGeneric<DataManager>
             switch (eventType)
             {
                 case "Main":
-                    eventName = _mainEventDataFileNameList[MainEventCursor]; // ¸ŞÀÎ ÀÌº¥Æ® Ä¿¼­´Â ¸ŞÀÎ ÀÌº¥Æ®¸¦ Åë°úÇÏ´Â ¼±ÅÃÁö¸¦ ´­·¶À» ¶§ Áõ°¡ÇÏµµ·Ï Ã³¸®
+                    eventName = _mainEventDataFileNameList[MainEventCursor]; // ë©”ì¸ ì´ë²¤íŠ¸ ì»¤ì„œëŠ” ë©”ì¸ ì´ë²¤íŠ¸ë¥¼ í†µê³¼í•˜ëŠ” ì„ íƒì§€ë¥¼ ëˆŒë €ì„ ë•Œ ì¦ê°€í•˜ë„ë¡ ì²˜ë¦¬
                     break;
                 case "Sub":
                     int eventRandomNumber = Random.Range(0, _subEventDataFileNameList.Count);
@@ -158,12 +158,12 @@ public class DataManager : SingletonGeneric<DataManager>
 
     public void LoadEventData(string eventType, string nextEventId = "")
     {
-        // ÆÄÀÏ ÀĞ°í µ¤¾î¾²±â
+        // íŒŒì¼ ì½ê³  ë®ì–´ì“°ê¸°
         string path = DecideNextEventPath(eventType, nextEventId);
         string jsonData = File.ReadAllText(path);
         EventData = JsonUtility.FromJson<EventData>(jsonData);
 
-        //ÁøÇà»óÈ² µ¥ÀÌÅÍ ¹× ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ ÀúÀå
+        //ì§„í–‰ìƒí™© ë°ì´í„° ë° í”Œë ˆì´ì–´ ë°ì´í„° ì €ì¥
         SaveEventProgressData();
         SavePlayerData();
     }

@@ -21,7 +21,7 @@ public class GameManager : SingletonGeneric<GameManager>
 
     private void Start()
     {
-        CheckSaveFileExists(); // ¼¼ÀÌºê µ¥ÀÌÅÍ°¡ ¾ø´Ù¸é ÀÌ¾îÇÏ±â ¹öÆ° ºñÈ°¼ºÈ­
+        CheckSaveFileExists(); // ì„¸ì´ë¸Œ ë°ì´í„°ê°€ ì—†ë‹¤ë©´ ì´ì–´í•˜ê¸° ë²„íŠ¼ ë¹„í™œì„±í™”
     }
 
     private void CheckSaveFileExists()

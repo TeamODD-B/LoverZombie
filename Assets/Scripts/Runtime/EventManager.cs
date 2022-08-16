@@ -80,16 +80,16 @@ public class EventManager : SingletonGeneric<EventManager>
         _isDrawingNow = true;
 
         string currentEventType = DataManager.Instance.EventData.Type;
-        //»õ ÀÌº¥Æ® ½ÃÀÛ½Ã ÀÌÀü ÀÌº¥Æ®¿¡ »ç¿ëµÈ ¿ÀºêÁ§Æ®µé Áö¿ì±â
+        //ìƒˆ ì´ë²¤íŠ¸ ì‹œì‘ì‹œ ì´ì „ ì´ë²¤íŠ¸ì— ì‚¬ìš©ëœ ì˜¤ë¸Œì íŠ¸ë“¤ ì§€ìš°ê¸°
         if (currentEventType == "Main" || currentEventType == "Sub")
         {
             EventManager.Instance.ClearScrollView();
         }
 
-        //½ºÅ©·Ñºä »çÀÌÁî Á¶Á¤
+        //ìŠ¤í¬ë¡¤ë·° ì‚¬ì´ì¦ˆ ì¡°ì •
         UpdateScrollViewSize();
 
-        //¿ÀºêÁ§Æ® °¡Á®¿À±â
+        //ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
         string imageName = DataManager.Instance.EventData.ImgName;
         if (imageName != "")
         {
@@ -99,10 +99,10 @@ public class EventManager : SingletonGeneric<EventManager>
         _mainScript = ObjectManager.Instance.GetText();
         _mainScript.transform.SetParent(_content);
 
-        //´õ¹Ì ¿ÀºêÁ§Æ® ÃÖÇÏÀ§·Î ÀÌµ¿
+        //ë”ë¯¸ ì˜¤ë¸Œì íŠ¸ ìµœí•˜ìœ„ë¡œ ì´ë™
         _dummyObject.SetAsLastSibling();
 
-        // ¸ŞÀÎ ½ºÅ©¸³Æ® ÃÊ±âÈ­ ÈÄ ´Ù½Ã ´ã±â
+        // ë©”ì¸ ìŠ¤í¬ë¦½íŠ¸ ì´ˆê¸°í™” í›„ ë‹¤ì‹œ ë‹´ê¸°
         _mainScript.text = "";
         _sentences.Clear();
         string[] lines = DataManager.Instance.EventData.Script;
@@ -111,7 +111,7 @@ public class EventManager : SingletonGeneric<EventManager>
             _sentences.Add(line);
         }
 
-        //ÅØ½ºÆ® ¿ÀºêÁ§Æ® »çÀÌÁî Á¶Á¤
+        //í…ìŠ¤íŠ¸ ì˜¤ë¸Œì íŠ¸ ì‚¬ì´ì¦ˆ ì¡°ì •
         int totalCount = 0;
         for (int i = 0; i < _sentences.Count; i++)
         {
@@ -120,7 +120,7 @@ public class EventManager : SingletonGeneric<EventManager>
         int height = 60 * totalCount;
         _mainScript.rectTransform.sizeDelta = new Vector2(_mainScript.rectTransform.rect.width, height);
 
-        //½ºÅ©·Ñ À§Ä¡ Á¶Á¤
+        //ìŠ¤í¬ë¡¤ ìœ„ì¹˜ ì¡°ì •
         string eventType = DataManager.Instance.EventData.Type;
         if (eventType == "Main" || eventType == "Sub")
         {
@@ -140,7 +140,7 @@ public class EventManager : SingletonGeneric<EventManager>
         // Image
         if (imageName != "")
         {
-            byte[] byteTexture = System.IO.File.ReadAllBytes($"Assets/Art/Sprites/{imageName}.png"); //³ªÁß¿¡ °æ·Î º¯¼ö·Î ¹Ù²ãÁÖ±â
+            byte[] byteTexture = System.IO.File.ReadAllBytes($"Assets/Art/Sprites/{imageName}.png"); //ë‚˜ì¤‘ì— ê²½ë¡œ ë³€ìˆ˜ë¡œ ë°”ê¿”ì£¼ê¸°
             if (byteTexture.Length > 0)
             {
                 Texture2D texture = new Texture2D(0, 0);
@@ -178,7 +178,7 @@ public class EventManager : SingletonGeneric<EventManager>
         _isTypingNow = false;
         _isDrawingNow = false;
 
-        //¹öÆ° È°¼ºÈ­
+        //ë²„íŠ¼ í™œì„±í™”
         OptionBoxToggle();
         UpdateButton();
     }
@@ -240,7 +240,7 @@ public class EventManager : SingletonGeneric<EventManager>
         EventData eventData = DataManager.Instance.EventData;
         int optionCount = eventData.OptionCount;
 
-        //ÃÊ±âÈ­
+        //ì´ˆê¸°í™”
         for (int i = 0; i < 4; i++)
         {
             _options[i].interactable = true;
@@ -248,7 +248,7 @@ public class EventManager : SingletonGeneric<EventManager>
             _options[i].gameObject.SetActive(false);
         }
 
-        //¹öÆ°¿¡ °ª ÇÒ´ç ·ÎÁ÷
+        //ë²„íŠ¼ì— ê°’ í• ë‹¹ ë¡œì§
         for (int i = 0; i < optionCount; i++)
         {
             _options[i].gameObject.SetActive(true);
@@ -288,7 +288,7 @@ public class EventManager : SingletonGeneric<EventManager>
         string id = optionButton.OptionId;
         string nextId = optionButton.NextEventId;
 
-        // ¾×¼Ç
+        // ì•¡ì…˜
         switch (id)
         {
             case "Zombie_3":
@@ -296,8 +296,8 @@ public class EventManager : SingletonGeneric<EventManager>
                 break;
         }
 
-        // ´ÙÀ½ ÀÌº¥Æ® °áÁ¤
-        if (nextId == "") // ÁöÁ¤ ÀÌº¥Æ® ¾øÀ½. ÁøÇà È½¼ö¿¡ µû¶ó ´ÙÀ½ ¸ŞÀÎ È¤Àº ·£´ı ¼­ºê ÀÌº¥Æ® ÁøÇà
+        // ë‹¤ìŒ ì´ë²¤íŠ¸ ê²°ì •
+        if (nextId == "") // ì§€ì • ì´ë²¤íŠ¸ ì—†ìŒ. ì§„í–‰ íšŸìˆ˜ì— ë”°ë¼ ë‹¤ìŒ ë©”ì¸ í˜¹ì€ ëœë¤ ì„œë¸Œ ì´ë²¤íŠ¸ ì§„í–‰
         {
             string eventType = "";
             int totalCount = DataManager.Instance.TotalEventProgressCount;
@@ -312,7 +312,7 @@ public class EventManager : SingletonGeneric<EventManager>
             }
             _options[index].onClick.AddListener(() => LoadNextEvent(eventType));
         }
-        else // ÁöÁ¤ ÀÌº¥Æ® ÀÖÀ½. ÁöÁ¤ ÀÌº¥Æ® ÁøÇà
+        else // ì§€ì • ì´ë²¤íŠ¸ ìˆìŒ. ì§€ì • ì´ë²¤íŠ¸ ì§„í–‰
         {
             string eventType = optionButton.NextEventType;
             _options[index].onClick.AddListener(() => LoadNextEvent(eventType, nextId));
@@ -324,41 +324,41 @@ public class EventManager : SingletonGeneric<EventManager>
         string[] items = itemRequired;
         bool itemExists = false;
 
-        if (items.Length == 0) // ¾ÆÀÌÅÛ ¿ä±¸Á¶°ÇÀÌ ¾ø±â¶§¹®¿¡ true ¹İÈ¯
+        if (items.Length == 0) // ì•„ì´í…œ ìš”êµ¬ì¡°ê±´ì´ ì—†ê¸°ë•Œë¬¸ì— true ë°˜í™˜
         {
             return true;
         }
-        else // ¾ÆÀÌÅÛ ¿ä±¸Á¶°ÇÀÌ 1°³ ÀÌ»óÀÌ¶ó¸é
+        else // ì•„ì´í…œ ìš”êµ¬ì¡°ê±´ì´ 1ê°œ ì´ìƒì´ë¼ë©´
         {
             for (int i = 0; i < items.Length; i++)
             {
                 string name = items[i];
-                switch (name) // ³ªÁß¿¡ ¸®½ºÆ® ¼øÂ÷ °Ë»öÀ¸·Î ¹Ù²Ü °Í
+                switch (name) // ë‚˜ì¤‘ì— ë¦¬ìŠ¤íŠ¸ ìˆœì°¨ ê²€ìƒ‰ìœ¼ë¡œ ë°”ê¿€ ê²ƒ
                 {
-                    case "ºü·ç":
+                    case "ë¹ ë£¨":
                         itemExists = DataManager.Instance.PlayerData.CrowBar;
                         break;
-                    case "»êÅºÃÑ":
+                    case "ì‚°íƒ„ì´":
                         itemExists = DataManager.Instance.PlayerData.Shotgun;
                         break;
-                    case "¿ìºñ":
+                    case "ìš°ë¹„":
                         itemExists = DataManager.Instance.PlayerData.RainCoat;
                         break;
-                    case "¿ì»ê":
+                    case "ìš°ì‚°":
                         itemExists = DataManager.Instance.PlayerData.Umbrella;
                         break;
                 }
 
-                if (!itemExists) // ¾ÆÀÌÅÛ ¿ä±¸»çÇ× Áß 1°³¶óµµ ºÒÃæºĞÇÏ´Ù¸é false ¹İÈ¯
+                if (!itemExists) // ì•„ì´í…œ ìš”êµ¬ì‚¬í•­ ì¤‘ 1ê°œë¼ë„ ë¶ˆì¶©ë¶„í•˜ë‹¤ë©´ false ë°˜í™˜
                 {
                     return false;
                 }
-                else if (i < items.Length - 1 && itemExists) // Ã¹¹øÂ° ¾ÆÀÌÅÛ ¿ä±¸»çÇ×ÀÌ ¸¸Á·µÆ°í, 2¹øÂ° ¾ÆÀÌÅÛ ¿ä±¸»çÇ×À» °Ë»çÇÏÁö ¾Ê¾Ò´Ù¸é
+                else if (i < items.Length - 1 && itemExists) // ì²«ë²ˆì§¸ ì•„ì´í…œ ìš”êµ¬ì‚¬í•­ì´ ë§Œì¡±ëê³ , 2ë²ˆì§¸ ì•„ì´í…œ ìš”êµ¬ì‚¬í•­ì„ ê²€ì‚¬í•˜ì§€ ì•Šì•˜ë‹¤ë©´
                 {
                     continue;
                 }
             }
-            return true; // ¹İº¹¹®À» Á¤»óÀûÀ¸·Î ¸¶ÃÆ´Ù¸é
+            return true; // ë°˜ë³µë¬¸ì„ ì •ìƒì ìœ¼ë¡œ ë§ˆì³¤ë‹¤ë©´
         }
     }
 
@@ -367,38 +367,38 @@ public class EventManager : SingletonGeneric<EventManager>
         string[] skills = skillRequired;
         bool skillExists = false;
 
-        if (skills.Length == 0) // ±â¼ú ¿ä±¸Á¶°ÇÀÌ ¾ø±â¶§¹®¿¡ true ¹İÈ¯
+        if (skills.Length == 0) // ê¸°ìˆ  ìš”êµ¬ì¡°ê±´ì´ ì—†ê¸°ë•Œë¬¸ì— true ë°˜í™˜
         {
             return true;
         }
-        else // ±â¼ú ¿ä±¸Á¶°ÇÀÌ 1°³ ÀÌ»óÀÌ¶ó¸é
+        else // ê¸°ìˆ  ìš”êµ¬ì¡°ê±´ì´ 1ê°œ ì´ìƒì´ë¼ë©´
         {
             for (int i = 0; i < skills.Length; i++)
             {
                 string name = skills[i];
-                switch (name) // ³ªÁß¿¡ ¸®½ºÆ® ¼øÂ÷ °Ë»öÀ¸·Î ¹Ù²Ü °Í
+                switch (name) // ë‚˜ì¤‘ì— ë¦¬ìŠ¤íŠ¸ ìˆœì°¨ ê²€ìƒ‰ìœ¼ë¡œ ë°”ê¿€ ê²ƒ
                 {
-                    case "³¯·ÆÇÔ":
+                    case "ë‚ ë µí•¨":
                         skillExists = DataManager.Instance.PlayerData.Dexterity;
                         break;
-                    case "±Ù·Â":
+                    case "ê·¼ë ¥":
                         skillExists = DataManager.Instance.PlayerData.Strength;
                         break;
-                    case "»ç°İ¼ú":
+                    case "ì‚¬ê²©ìˆ ":
                         skillExists = DataManager.Instance.PlayerData.ShootingSkill;
                         break;
                 }
 
-                if (!skillExists)  // ±â¼ú ¿ä±¸»çÇ× Áß 1°³¶óµµ ºÒÃæºĞÇÏ´Ù¸é false ¹İÈ¯
+                if (!skillExists)  // ê¸°ìˆ  ìš”êµ¬ì‚¬í•­ ì¤‘ 1ê°œë¼ë„ ë¶ˆì¶©ë¶„í•˜ë‹¤ë©´ false ë°˜í™˜
                 {
                     return false;
                 }
-                else if (i < skills.Length - 1 && skillExists) // Ã¹¹øÂ° ±â¼ú ¿ä±¸»çÇ×ÀÌ ¸¸Á·µÆ°í, 2¹øÂ° ±â¼ú ¿ä±¸»çÇ×À» °Ë»çÇÏÁö ¾Ê¾Ò´Ù¸é
+                else if (i < skills.Length - 1 && skillExists) // ì²«ë²ˆì§¸ ê¸°ìˆ  ìš”êµ¬ì‚¬í•­ì´ ë§Œì¡±ëê³ , 2ë²ˆì§¸ ê¸°ìˆ  ìš”êµ¬ì‚¬í•­ì„ ê²€ì‚¬í•˜ì§€ ì•Šì•˜ë‹¤ë©´
                 {
                     continue;
                 }
             }
-            return true; // ¹İº¹¹®À» Á¤»óÀûÀ¸·Î ¸¶ÃÆ´Ù¸é
+            return true; // ë°˜ë³µë¬¸ì„ ì •ìƒì ìœ¼ë¡œ ë§ˆì³¤ë‹¤ë©´
         }
     }
 
@@ -409,7 +409,7 @@ public class EventManager : SingletonGeneric<EventManager>
         string[] skills = targetOptionButton.SkillRequired;
 
         //Item
-        if (items.Length == 2) //¾ÆÀÌÅÛ ¿ä±¸»çÇ× 2°³
+        if (items.Length == 2) //ì•„ì´í…œ ìš”êµ¬ì‚¬í•­ 2ê°œ
         {
             _optionItemTexts[index].text = items[0];
             _optionItemTexts[index].color = _itemTextColor;
@@ -418,7 +418,7 @@ public class EventManager : SingletonGeneric<EventManager>
             _optionSkillTexts[index].color = _itemTextColor;
         }
         //Skill
-        else if (skills.Length == 2) //½ºÅ³ ¿ä±¸»çÇ× 2°³
+        else if (skills.Length == 2) //ìŠ¤í‚¬ ìš”êµ¬ì‚¬í•­ 2ê°œ
         {
             _optionItemTexts[index].text = skills[0];
             _optionItemTexts[index].color = _skillTextColor;
@@ -426,7 +426,7 @@ public class EventManager : SingletonGeneric<EventManager>
             _optionSkillTexts[index].text = skills[1];
             _optionSkillTexts[index].color = _skillTextColor;
         }
-        else // ±×¿Ü ¿ä±¸»çÇ×ÀÌ ÇÏ³ª¾¿ÀÌ°Å³ª, ¾ÆÀÌÅÛ È¤Àº ±â¼ú ¿ä±¸»çÇ×¸¸ ÀÖÀ» ¶§
+        else // ê·¸ì™¸ ìš”êµ¬ì‚¬í•­ì´ í•˜ë‚˜ì”©ì´ê±°ë‚˜, ì•„ì´í…œ í˜¹ì€ ê¸°ìˆ  ìš”êµ¬ì‚¬í•­ë§Œ ìˆì„ ë•Œ
         {
             //Item
             if (items.Length == 0)
