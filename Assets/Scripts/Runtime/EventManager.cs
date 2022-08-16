@@ -33,14 +33,13 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private Transform _textGroup; 
     [SerializeField] private Transform _imageGroup;
     [SerializeField] private RectTransform _dummyObject;
-    private float _InitDummyObjectHeight;
 
     [Header("----------Var")]
     private bool _isDrawingNow;
     private float _optionBoxDelayTime = 0.2f;
     private int nextMainCount = 0;
-    private int minNextMainCountPlus = 5;
-    private int maxNextMainCountPlus = 10;
+    private int minNextMainCountPlus = 20;
+    private int maxNextMainCountPlus = 40;
 
     protected override void Awake()
     {
@@ -52,13 +51,16 @@ public class EventManager : SingletonGeneric<EventManager>
         _sentences = new List<string>();
         nextMainCount = Random.Range(minNextMainCountPlus, maxNextMainCountPlus);
         _InitScrollViewHeight = _scrollView.rect.height;
-        _InitDummyObjectHeight = _dummyObject.rect.height;
     }
 
-    public void LoadNextEvent(string eventType, string nextEventId = "")
+    public void LoadNextEvent(string eventType, string nextEventId = "", bool isLoadGame = false)
     {
         DataManager.Instance.LoadEventData(eventType, nextEventId);
         Draw();
+        if (isLoadGame)
+        {
+            ScrollToTop();
+        }
     }
 
     public void IncreaseDrawSpeed()
@@ -118,8 +120,16 @@ public class EventManager : SingletonGeneric<EventManager>
         int height = 60 * totalCount;
         _mainScript.rectTransform.sizeDelta = new Vector2(_mainScript.rectTransform.rect.width, height);
 
-        //더미 오브젝트 사이즈 조정
-        UpdateDummyObjectSize(imageName);
+        //스크롤 위치 조정
+        string eventType = DataManager.Instance.EventData.Type;
+        if (eventType == "Main" || eventType == "Sub")
+        {
+            ScrollToTop();
+        }
+        else
+        {
+            ScrollToBottom();
+        }
 
         // Start Draw
         StartCoroutine(DrawRoutine(imageName));
@@ -197,33 +207,13 @@ public class EventManager : SingletonGeneric<EventManager>
         _scrollView.sizeDelta = new Vector2(_scrollView.rect.width, height);
     }
 
-    private void UpdateDummyObjectSize(string imageName)
+    private void ScrollToTop()
     {
-        string eventType = DataManager.Instance.EventData.Type;
-        if (eventType == "Main" || eventType == "Sub")
-        {
-            _dummyObject.sizeDelta = new Vector2(_dummyObject.rect.width, _InitDummyObjectHeight);
-            _scrollRect.normalizedPosition = new Vector2(0, 1);
-            return;
-        }
+        _scrollRect.normalizedPosition = new Vector2(0, 1);
+    }
 
-        float spacing = 10f;
-
-        //Image
-        bool ImageExists = imageName != "";
-        float imageHeight = 0;
-        if (ImageExists)
-        {
-            imageHeight = _mainImage.rectTransform.sizeDelta.y;
-        }
-
-        //Text
-        float scriptHeight = _mainScript.rectTransform.sizeDelta.y;
-
-        //Calculate
-        float heightSum = imageHeight + scriptHeight + spacing;
-        float finalHeight = _dummyObject.rect.height + heightSum;
-        _dummyObject.sizeDelta = new Vector2(_dummyObject.rect.width, finalHeight);
+    private void ScrollToBottom()
+    {
         _scrollRect.normalizedPosition = new Vector2(0, 0);
     }
 

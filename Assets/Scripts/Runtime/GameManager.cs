@@ -11,6 +11,7 @@ public class GameManager : SingletonGeneric<GameManager>
     [SerializeField] private GameObject _saveLoadPanel;
     [SerializeField] private GameObject _inGamePanel;
     [SerializeField] private Button _loadGameButton;
+    [SerializeField] private GameObject _settingsPanel;
 
     // Start is called before the first frame update
     protected override void Awake()
@@ -52,9 +53,13 @@ public class GameManager : SingletonGeneric<GameManager>
 
         SaveLoadPanelOff();
 
+        AudioManager.Instance.LoadAudioData();
+        AudioManager.Instance.PlayBackground();
+
+
         string lastEventType = DataManager.Instance.PlayerData.LastEventType;
         string lastEventId = DataManager.Instance.PlayerData.LastEventId;
-        EventManager.Instance.LoadNextEvent(lastEventType, lastEventId);
+        EventManager.Instance.LoadNextEvent(lastEventType, lastEventId, true);
     }
 
     public void StartNewGame()
@@ -63,6 +68,22 @@ public class GameManager : SingletonGeneric<GameManager>
 
         SaveLoadPanelOff();
 
+        AudioManager.Instance.VolumeInitSetting();
+        AudioManager.Instance.PlayBackground();
+
         EventManager.Instance.LoadNextEvent("Main");
+    }
+
+    public void SettingsPanelToggle()
+    {
+        bool isSettingsPanelOn = _settingsPanel.activeSelf;
+        if (isSettingsPanelOn)
+        {
+            _settingsPanel.SetActive(false);
+        }
+        else 
+        {
+            _settingsPanel.SetActive(true);
+        }
     }
 }
