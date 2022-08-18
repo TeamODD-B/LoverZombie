@@ -7,6 +7,7 @@
     "OptionCount": 3,
     "Option1": {
         "OptionId" : "Zombie_1",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "벽을 타고 넘어 도망친다.",
@@ -19,6 +20,7 @@
     },
     "Option2": {
         "OptionId" : "Zombie_2",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "빠루를 휘둘러 탈출로를 만든다.",
@@ -31,6 +33,7 @@
     },
     "Option3": {
         "OptionId" : "Zombie_3",
+        "ActionId" : ["ShootAShotgun"],
         "NextEventType" : "Sub/EscapeFromZombieUsingShotgun",
         "NextEventId" : "EscapeFromZombieUsingShotgun1",
         "Text": "산탄총을 쏜다.",

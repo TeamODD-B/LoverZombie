@@ -7,6 +7,7 @@
     "OptionCount": 4,
     "Option1": {
         "OptionId" : "Shop_1",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "들어간다.",
@@ -19,6 +20,7 @@
     },
     "Option2": {
         "OptionId" : "Shop_2",
+        "ActionId" : [],
         "NextEventType" : "Sub/Common",
         "NextEventId" : "Leave",
         "Text": "떠난다.",
@@ -31,6 +33,7 @@
     },
     "Option3": {
         "OptionId" : "Shop_3",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "주변을 수색한다.",
@@ -43,6 +46,7 @@
     },
     "Option4": {
         "OptionId" : "Shop_4",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "일자리를 구한다.",

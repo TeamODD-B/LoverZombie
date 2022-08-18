@@ -7,6 +7,7 @@
     "OptionCount": 1,
     "Option1": {
         "OptionId" : "EscapeFromZombieUsingShotgun1_1",
+        "ActionId" : [],
         "NextEventType" : "Sub/EscapeFromZombieUsingShotgun",
         "NextEventId" : "EscapeFromZombieUsingShotgunEnd",
         "Text": "빵야 빵야!",

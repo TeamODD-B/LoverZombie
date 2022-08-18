@@ -7,6 +7,7 @@
     "OptionCount": 4,
     "Option1": {
         "OptionId" : "Hospital_1",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "들어간다.",
@@ -19,6 +20,7 @@
     },
     "Option2": {
         "OptionId" : "Hospital_2",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "떠난다.",
@@ -31,6 +33,7 @@
     },
     "Option3": {
         "OptionId" : "Hospital_3",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "진찰을 예약한다.",
@@ -43,6 +46,7 @@
     },
     "Option4": {
         "OptionId" : "Hospital_4",
+        "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",
         "Text": "의료진들을 돕는다.",

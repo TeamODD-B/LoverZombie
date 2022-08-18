@@ -285,15 +285,19 @@ public class EventManager : SingletonGeneric<EventManager>
 
     private void AddButtonFunction(Option optionButton, int index)
     {
-        string id = optionButton.OptionId;
+        string [] actionIdList = optionButton.ActionId;
         string nextId = optionButton.NextEventId;
 
         // 액션
-        switch (id)
-        {
-            case "Zombie_3":
-                _options[index].onClick.AddListener(() => EventLibraryManager.Instance.ShootAShotgun());
-                break;
+        EventLibraryManager ActionLibrary = EventLibraryManager.Instance;
+        for (int i = 0; i < actionIdList.Length; i++)
+        { 
+            switch (actionIdList[i])
+            {
+                case "ShootAShotgun": //산탄총 발사
+                    _options[index].onClick.AddListener(() => ActionLibrary.ShootAShotgun());
+                    break;
+            }
         }
 
         // 다음 이벤트 결정
