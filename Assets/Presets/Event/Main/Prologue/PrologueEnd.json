@@ -1,12 +1,12 @@
 {
-    "EventId" : "Prologue3",
+    "EventId" : "PrologueEnd",
     "Type": "Main/Prologue",
     "Name": "프롤로그",
     "ImgName": "",
     "Script": ["가방에서 발견한 연인 사진을 보며 굳은 생존 의지를 다짐한다.", "우선 도시 외각의 봉쇄선에 가보기로 한다. 군인이나 경찰의 도움을 받을 수 있을지도 모른다."],
     "OptionCount": 1,
     "Option1": {
-        "OptionId" : "Prologue3_1",
+        "OptionId" : "PrologueEnd_1",
         "ActionId" : [],
         "NextEventType" : "Sub",
         "NextEventId" : "",

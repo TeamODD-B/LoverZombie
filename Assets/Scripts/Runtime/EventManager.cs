@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EventManager : SingletonGeneric<EventManager>
 {
@@ -9,21 +10,20 @@ public class EventManager : SingletonGeneric<EventManager>
     [SerializeField] private Image _mainImage;
 
     [Header("----------Text")]
-    [SerializeField] private Text _mainScript;
+    [SerializeField] private TextMeshProUGUI _mainScript;
     private List<string> _sentences;
     private bool _isTypingNow;
     private float _typingSpeed = 0.03f;
-    private int _maxLetterInOneLine = 30;
+    private int _maxLetterInOneLine = 29;
 
     [Header("----------Option")]
     [SerializeField] private GameObject _optionBox;
     [SerializeField] private Button[] _options;
-    [SerializeField] private Text[] _optionTexts;
-    [SerializeField] private Text[] _optionItemTexts;
-    [SerializeField] private Text[] _optionSkillTexts;
+    [SerializeField] private TextMeshProUGUI[] _optionTexts;
+    [SerializeField] private TextMeshProUGUI[] _optionItemTexts;
+    [SerializeField] private TextMeshProUGUI[] _optionSkillTexts;
     [SerializeField] private Color _itemTextColor;
     [SerializeField] private Color _skillTextColor;
-    [SerializeField] private RectTransform optionBoxBackground;
 
     [Header("----------ScrollView")]
     [SerializeField] private RectTransform _scrollView;
@@ -115,7 +115,7 @@ public class EventManager : SingletonGeneric<EventManager>
         int totalCount = 0;
         for (int i = 0; i < _sentences.Count; i++)
         {
-            totalCount += (int)Mathf.Ceil(_sentences[i].Length / (float)29);
+            totalCount += (int)Mathf.Ceil(_sentences[i].Length / (float)_maxLetterInOneLine);
         }
         int height = 60 * totalCount;
         _mainScript.rectTransform.sizeDelta = new Vector2(_mainScript.rectTransform.rect.width, height);
@@ -152,25 +152,17 @@ public class EventManager : SingletonGeneric<EventManager>
 
         // Script
         _isTypingNow = true;
-        int letterCount = 0;
         for (int i = 0; i < _sentences.Count; i++)
         {
             char[] letters = _sentences[i].ToCharArray();
             foreach (char letter in letters)
             {
-                letterCount++;
-                if (letterCount > _maxLetterInOneLine)
-                {
-                    _mainScript.text = _mainScript.text + "\n";
-                    letterCount = 0;
-                }
 
                 _mainScript.text += letter;
                 yield return new WaitForSeconds(_typingSpeed);
             }
 
             _mainScript.text += "\n";
-            letterCount = 0;
         }
 
         _typingSpeed = 0.03f;
@@ -280,22 +272,21 @@ public class EventManager : SingletonGeneric<EventManager>
             }
             AddButtonFunction(optionButton, i);
         }
-        UpdateOptionBoxBackgroundSize(optionCount);
     }
 
     private void AddButtonFunction(Option optionButton, int index)
     {
-        string [] actionIdList = optionButton.ActionId;
+        string[] actionIdList = optionButton.ActionId;
         string nextId = optionButton.NextEventId;
 
         // 액션
-        EventLibraryManager ActionLibrary = EventLibraryManager.Instance;
+        EventLibraryManager actionLibrary = EventLibraryManager.Instance;
         for (int i = 0; i < actionIdList.Length; i++)
-        { 
+        {
             switch (actionIdList[i])
             {
-                case "ShootAShotgun": //산탄총 발사
-                    _options[index].onClick.AddListener(() => ActionLibrary.ShootAShotgun());
+                case "ShootAShotgun":
+                    _options[index].onClick.AddListener(() => actionLibrary.ShootAShotgun());
                     break;
             }
         }
@@ -458,12 +449,6 @@ public class EventManager : SingletonGeneric<EventManager>
         //Button Script
         string buttonScript = targetOptionButton.Text;
         _optionTexts[index].text = buttonScript;
-    }
-
-    private void UpdateOptionBoxBackgroundSize(int optionCount)
-    {
-        int height = 150 * optionCount;
-        optionBoxBackground.sizeDelta = new Vector2(optionBoxBackground.rect.width, height);
     }
 
     public void ClearScrollView()

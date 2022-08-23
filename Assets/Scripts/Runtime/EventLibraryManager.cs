@@ -44,7 +44,7 @@ public class EventLibraryManager : SingletonGeneric<EventLibraryManager>
         _bulletMark.color = fadeInColor;
         yield return new WaitForSeconds(bulletMarkFadeOutTime);
 
-        while (_bulletMark.color.a > 0)
+        while (_bulletMark.color != fadeOutColor)
         {
             _bulletMark.color = Color.Lerp(_bulletMark.color, fadeOutColor, 0.05f);
             yield return null;

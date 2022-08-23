@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ObjectManager : SingletonGeneric<ObjectManager>
 {
@@ -14,30 +15,30 @@ public class ObjectManager : SingletonGeneric<ObjectManager>
     [SerializeField] private GameObject _imagePrefab;
 
     //List
-    [SerializeField] private List<Text> _textList;
+    [SerializeField] private List<TextMeshProUGUI> _textList;
     [SerializeField] private List<Image> _imageList;
 
     protected override void Awake()
     {
         base.Awake();
-        _textList = new List<Text>();
+        _textList = new List<TextMeshProUGUI>();
         _imageList = new List<Image>();
     }
 
     // Text
-    private Text CreateText()
+    private TextMeshProUGUI CreateText()
     {
         GameObject obj = Instantiate(_textPrefab, _textGroup);
-        Text text = obj.GetComponent<Text>();
+        TextMeshProUGUI text = obj.GetComponent<TextMeshProUGUI>();
         _textList.Add(text);
         return text;
     }
 
-    public Text GetText()
+    public TextMeshProUGUI GetText()
     {
         for (int i = 0; i < _textList.Count; i++)
         {
-            Text text = _textList[i];
+            TextMeshProUGUI text = _textList[i];
             if (!text.gameObject.activeSelf)
             {
                 text.gameObject.SetActive(true);
